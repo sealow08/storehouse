@@ -1,0 +1,36 @@
+<%= form_for(@bottle, :url => bottles_path, :html => {:method => :get} ) do |f| %>
+	<%= render 'form_search', :f => f %>
+  	<div class="actions">
+		<%= f.submit "Search", :name => nil %>
+  	</div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ('input:submit').button();
+			jQ('#bottle_date_received').datepicker({ dateFormat: 'yy-mm-dd' });
+			
+			// Setup event code
+			// Can choose search with CAS number or Substance selection but not both.  If one is indicated then blank the other.
+			jQ('#bottle_substance_id').change(function(){
+				if(jQ('#bottle_substance_id option:selected').text() != '') {
+					jQ('#bottle_cas_number').val('');
+				}
+			});
+			
+			jQ('#bottle_cas_number').change(function(){
+				if(jQ(this).val() != '') {
+					jQ('#bottle_substance_id').val(0);
+				}
+			});
+			
+			var substances = <%= raw Substance.order(:sort_keyword).collect {|sub| sub.name }.to_json %>;
+			jQ("#substance").autocomplete({
+				source: substances
+			});
+		});
+	}
+</script>
+

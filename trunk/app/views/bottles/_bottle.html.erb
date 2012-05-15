@@ -1,0 +1,3 @@
+<li>
+	<%= link_to "#{bottle.substance.name}, #{bottle.supplier.name}", bottle_path(bottle), :class => "result_link" %><%= link_to("Retire", retire_bottle_path(bottle), :confirm => 'Are you sure?', :class => "delete_btn") if !bottle.retired? %><%= link_to "Edit", edit_bottle_path(bottle), :class => "edit_btn" %>
+</li>

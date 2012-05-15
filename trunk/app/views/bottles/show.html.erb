@@ -1,0 +1,58 @@
+<div class="field">
+  <%= content_tag :label, "CAS number", :class => 'round' %>:&nbsp;<%= @bottle.cas_number %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Barcode", :class => 'round' %>:&nbsp;<%= @bottle.barcode %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Substance", :class => 'round' %>:&nbsp;<%= @bottle.substance.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Supplier", :class => 'round' %>:&nbsp;<%= @bottle.supplier.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Product cat No.", :class => 'round' %>:&nbsp;<%= @bottle.product_cat_no %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Flammable", :class => 'round' %>:&nbsp;<%= @bottle.flammable ? image_tag("tick.png") : raw("&nbsp;") %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Hazardous", :class => 'round' %>:&nbsp;<%= @bottle.hazardous ? image_tag("tick.png") : raw("&nbsp;") %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Size", :class => 'round' %>:&nbsp;<%= "#{@bottle.size} #{@bottle.unit.name}" %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Location", :class => 'round' %>:&nbsp;<%= @bottle.sublocation.location.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Sub-location", :class => 'round' %>:&nbsp;<%= @bottle.sublocation.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "PO number", :class => 'round' %>:&nbsp;<%= @bottle.po_number %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Group", :class => 'round' %>:&nbsp;<%= @bottle.group.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Date received", :class => 'round' %>:&nbsp;<%= @bottle.date_received %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Date retired", :class => 'round' %>:&nbsp;<%= date_retired_at(@bottle.retired_at) %>
+</div>
+
+<div class="actions">
+	<%= link_to "Back to list", session[:back_btn_path], :id => "back_btn" %>
+</div>
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("#back_btn").button({
+				icons: {
+					primary:'ui-icon-arrow-1-w'
+				}
+			});
+		});
+	}
+</script>

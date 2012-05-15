@@ -1,0 +1,19 @@
+# == Schema Information
+# Schema version: 20110315081343
+#
+# Table name: substances
+#
+#  id           :integer(38)     not null, primary key
+#  name         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  sort_keyword :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+
+two:
+  name: MyString

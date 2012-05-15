@@ -1,0 +1,23 @@
+<%= form_for(@location) do |f| %>
+	<%= render 'form', :f => f %>
+  	<div class="actions">
+		<%= link_to "Back to list", session[:back_btn_path], :id => "back_btn" %>
+		<%= f.submit "Create location" %>
+  	</div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("input:submit").button();
+			jQ("#back_btn").button({
+				icons: {
+					primary:'ui-icon-arrow-1-w'
+				}
+			});
+		});
+	}
+</script>
+
+

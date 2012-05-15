@@ -1,0 +1,3 @@
+<li>
+	<%= link_to supplier.name, supplier_path(supplier), :class => "result_link" %><%= link_to "Delete", supplier_path(supplier), :method => :delete, :confirm => 'Deleting a supplier will delete all bottles associated with that supplier. Are you sure?', :class => "delete_btn" %><%= link_to "Edit", edit_supplier_path(supplier), :class => "edit_btn" %>
+</li>

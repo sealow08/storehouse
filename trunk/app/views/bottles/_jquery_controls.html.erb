@@ -1,0 +1,46 @@
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("input:submit").button();
+			jQ("#back_btn").button({
+				icons: {
+					primary:'ui-icon-arrow-1-w'
+				}
+			});
+			jQ("#bottle_date_received").datepicker({ dateFormat: 'yy-mm-dd' });
+			
+			// Setup event code
+			jQ('#bottle_location_id').change(function(){
+				//alert("location_id: " + jQ(this).val());
+				//var loc_id = jQ(this).val();
+				jQ.post('<%= sublocation_select_path %>', { location_id: jQ(this).val() }, function(data){
+					jQ("#sublocations_container").html(data);
+					wire_up_sublocation(jQ);
+				});
+			});
+
+			// Can choose search with CAS number or Substance selection but not both.  If one is indicated then blank the other.
+			function wire_up_sublocation(jQ) {
+				jQ('#bottle_sublocation_id').change(function(){
+					if(jQ('#bottle_sublocation_id option:selected').text() != '') {
+						jQ('#bottle_sublocation_new').val('');
+					}
+				});
+			}
+			
+			wire_up_sublocation(jQ);
+			
+			jQ('#bottle_sublocation_new').change(function(){
+				if(jQ(this).val() != '') {
+					jQ('#bottle_sublocation_id').val(0);
+				}
+			});
+			
+			var substances = <%= raw Substance.order(:sort_keyword).collect {|sub| sub.name }.to_json %>;
+			jQ("#substance").autocomplete({
+				source: substances
+			});
+		});
+	}
+</script>

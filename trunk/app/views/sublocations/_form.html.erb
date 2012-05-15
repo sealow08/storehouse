@@ -1,0 +1,7 @@
+<%= f.error_messages :header_message => "Sublocation saving error", :message => "The sublocation could not be saved. Please correct the following:" %>
+<div class="field">
+  <%= f.label :name, :class => 'round' %>:&nbsp;<%= f.text_field :name %>
+</div>
+<div class="field">
+  	<%= f.label :location_id, :class => 'round' %>:&nbsp;<%= select(:sublocation, :location_id, Location.order(:name).collect {|loc| [ loc.name, loc.id ] }, { :include_blank => true }) %>
+</div>

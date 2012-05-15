@@ -1,0 +1,59 @@
+<% 
+#  supplier_id    :integer(38)
+#  substance_id   :integer(38)
+#  size           :integer(38)
+#  unit_id        :integer(38)
+#  po_number      :string(255)
+#  group_id       :integer(38)
+#  date_received  :date
+#  created_at     :datetime
+#  updated_at     :datetime
+#  cas_number     :string(255)
+#  sublocation_id :integer(38)
+#  product_cat_no :integer(38)
+
+# ====== > > rails plugin install git://github.com/rails/dynamic_form.git for displaying errors in the next line
+ -%>
+<%= f.error_messages :header_message => "Bottle saving error", :message => "The bottle could not be saved. Please correct the following:" %>
+<div class="field">
+  	<%= f.label :cas_number, "CAS number", :class => 'round' %>:&nbsp;<%= f.text_field :cas_number %>
+</div>
+<div class="field">
+  	<%= f.label :barcode, :class => 'round' %>:&nbsp;<%= f.text_field :barcode %>
+</div>
+<div class=" field">
+	<%= f.label :substance_id, :class => 'round' %>:&nbsp;<%= substance_input(@bottle) %>
+</div>
+<div class="field">
+  	<%= f.label :supplier_id, :class => 'round' %>:&nbsp;<%= select(:bottle, :supplier_id, Supplier.order(:name).collect {|sup| [ sup.name, sup.id ] }, { :include_blank => true }) %>
+</div>
+<div class="field">
+  	<%= f.label :product_cat_no, "Product cat No.", :class => 'round' %>:&nbsp;<%= f.text_field :product_cat_no %>
+</div>
+<div class="field">
+  <%= f.label :flammable, :class => 'round' %>:&nbsp;<%= f.check_box :flammable %>
+</div>
+<div class="field">
+  <%= f.label :hazardous, :class => 'round' %>:&nbsp;<%= f.check_box :hazardous %>
+</div>
+<div class="field">
+  	<%= f.label :size, :class => 'round' %>:&nbsp;<%= f.text_field :size %>&nbsp;<%= select(:bottle, :unit_id, Unit.order(:name).collect {|un| [ un.name, un.id ] }, { :include_blank => true }) %>
+</div>
+<%= raw(quantity_field(f, @bottle.id, request.fullpath)) %>
+<div class="field">
+  	<%= f.label :location_id, :class => 'round' %>:&nbsp;<%= select(:bottle,:location_id, Location.order(:name).collect {|loc| [ loc.name, loc.id ] }, { :include_blank => true }) %>
+</div>
+<div class="field">
+	<%= f.label :sublocation_id, "Sub-location", :class => 'round' %>:&nbsp;<span id="sublocations_container"><%= collection_select(:bottle, :sublocation_id, @sublocations, :id, :name, { :include_blank => true }) %></span>
+  	<%= f.text_field :sublocation_new, :size => 20 %>
+</div>
+<div class="field">
+  	<%= f.label :po_number, "PO number", :class => 'round' %>:&nbsp;<%= f.text_field :po_number %>
+</div>
+<div class="field">
+  	<%= f.label :group_id, :class => 'round' %>:&nbsp;<%= select(:bottle, :group_id, Group.order(:name).collect {|grp| [ grp.name, grp.id ] }, { :include_blank => true }) %>
+</div>
+<%= raw(date_received_field(f, @bottle.id, request.fullpath, @bottle.date_received)) %>
+<div class="field">
+	<%= f.label :retired_at, "Date retired", :class => 'round' %>:&nbsp;<%= date_retired_at(@bottle.retired_at) %>
+</div>

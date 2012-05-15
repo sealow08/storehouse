@@ -1,0 +1,34 @@
+<div>
+	<%= link_to "Suppliers", suppliers_url, :id => "suppliers_btn", :class => "admin_btn" -%>
+	<%= link_to "Locations", locations_url, :id => "locations_btn", :class => "admin_btn"  -%>
+	<%= link_to "Sub-locations", sublocations_url, :id => "sublocations_btn", :class => "admin_btn"  -%>
+	<%= link_to "Substances", substances_url, :id => "substances_btn", :class => "admin_btn"  -%>
+</div>
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("#suppliers_btn").button({
+				icons: {
+					primary:'ui-icon-pencil'
+				}
+			});
+			jQ("#locations_btn").button({
+				icons: {
+					primary:'ui-icon-pencil'
+				}
+			});
+			jQ("#sublocations_btn").button({
+				icons: {
+					primary:'ui-icon-pencil'
+				}
+			});
+			jQ("#substances_btn").button({
+				icons: {
+					primary:'ui-icon-pencil'
+				}
+			});
+			
+		});
+	}
+</script>

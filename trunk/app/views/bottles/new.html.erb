@@ -1,0 +1,11 @@
+<%= form_for(@bottle) do |f| %>
+	<%= render 'form', :f => f %>
+  	<div class="actions">
+		<%= f.submit "Create bottle" %>
+		<p id="out"></p>
+  	</div>
+<% end %>
+
+<%= render 'jquery_controls' %>
+
+

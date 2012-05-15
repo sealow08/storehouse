@@ -1,0 +1,16 @@
+# == Schema Information
+# Schema version: 20110314031400
+#
+# Table name: groups
+#
+#  id   :integer(10)     primary key
+#  name :string(64)      not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+
+two:
+  name: MyString

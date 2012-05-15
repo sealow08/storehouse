@@ -1,0 +1,51 @@
+# == Schema Information
+# Schema version: 20110603071421
+#
+# Table name: bottles
+#
+#  id             :integer(38)     not null, primary key
+#  supplier_id    :integer(38)
+#  substance_id   :integer(38)
+#  size           :integer(38)
+#  unit_id        :integer(38)
+#  po_number      :string(255)
+#  group_id       :integer(38)
+#  date_received  :date
+#  created_at     :datetime
+#  updated_at     :datetime
+#  cas_number     :string(255)
+#  sublocation_id :integer(38)
+#  product_cat_no :integer(38)
+#  retired_at     :datetime
+#  flammable      :boolean(1)
+#  hazardous      :boolean(1)
+#  barcode        :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  supplier_id: 1
+  substance_id: 1
+  size: 9.99
+  unit_id: 1
+  quantity: 1
+  container_empty: false
+  location_id: 1
+  invoice_number: MyString
+  po_number: MyString
+  group_id: 1
+  date_received: 2011-02-07
+
+two:
+  supplier_id: 1
+  substance_id: 1
+  size: 9.99
+  unit_id: 1
+  quantity: 1
+  container_empty: false
+  location_id: 1
+  invoice_number: MyString
+  po_number: MyString
+  group_id: 1
+  date_received: 2011-02-07

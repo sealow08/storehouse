@@ -1,0 +1,19 @@
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("input:submit").button();
+			jQ("#back_btn").button({
+				icons: {
+					primary:'ui-icon-arrow-1-w'
+				}
+			});
+			
+			// Set the default sort keyword
+			jQ("#substance_name").change(function(){
+				var sub_name = jQ("#substance_name").val();
+				jQ("#substance_sort_keyword").val(sub_name.match(/[A-Z]+[a-z]+/));
+			});
+		});
+	}
+</script>

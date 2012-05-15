@@ -1,0 +1,3 @@
+<li>
+	<%= link_to substance.name, substance_path(substance), :class => "result_link" %><%= link_to "Delete", substance_path(substance), :method => :delete, :confirm => 'Deleting a substance will delete all bottles associated with that substance. Are you sure?', :class => "delete_btn" %><%= link_to "Edit", edit_substance_path(substance), :class => "edit_btn" %>
+</li>

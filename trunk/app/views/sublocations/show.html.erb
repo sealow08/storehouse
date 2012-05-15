@@ -1,0 +1,21 @@
+<div class="field">
+  <%= content_tag :label, "Name", :class => 'round' %>:&nbsp;<%= @sublocation.name %>
+</div>
+<div class="field">
+  <%= content_tag :label, "Location", :class => 'round' %>:&nbsp;<%= @sublocation.location.name %>
+</div>
+<div class="actions">
+	<%= link_to "Back to list", session[:back_btn_path], :id => "back_btn" %>
+</div>
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("#back_btn").button({
+				icons: {
+					primary:'ui-icon-arrow-1-w'
+				}
+			});
+		});
+	}
+</script>

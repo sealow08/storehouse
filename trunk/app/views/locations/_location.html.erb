@@ -1,0 +1,3 @@
+<li>
+	<%= link_to location.name, location_path(location), :class => "result_link" %><%= link_to "Delete", location_path(location), :method => :delete, :confirm => 'Deleting a location will delete all bottles associated with that location and all sub-locations of that location. Are you sure?', :class => "delete_btn" %><%= link_to "Edit", edit_location_path(location), :class => "edit_btn" %>
+</li>

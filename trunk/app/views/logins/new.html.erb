@@ -1,0 +1,22 @@
+<%= form_for(@user, :url => logins_path, :method => :create) do |f| %>
+<%= f.error_messages :header_message => "Login error", :message => "User could not be logged in. Please correct the following:" %>
+  <div class="field">
+    <%= f.label :name, :class => 'round' %>:&nbsp;<%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password, :class => 'round' %>:&nbsp;<%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("input:submit").button();
+			jQ("#user_name").focus();
+		});
+	}
+</script>

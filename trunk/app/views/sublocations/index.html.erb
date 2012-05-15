@@ -1,0 +1,34 @@
+<%= link_to "Create new Sub-location", new_sublocation_path, :id => "create_btn" %>
+<%= form_for(@sublocation, :url => sublocations_path, :html => {:class => "round", :method => :get, :id => "search_box_subloc"} ) do |f| %>
+	<%= f.label "At location", :class => 'round' %>:&nbsp;<%= select(:sublocation, :location_id, Location.order(:name).collect {|loc| [ loc.name, loc.id ] }, { :include_blank => true }) %>
+	<%= f.submit "Search", :name => nil %>
+<% end -%>
+<div class="round" id="result_list">
+<%= will_paginate %>
+<ul>
+<%= render @sublocations %>
+</ul>
+<%= will_paginate %>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+	function other_setup(jQ) {
+		jQ(function() {
+			// Setup the buttons
+			jQ("#create_btn, input:submit").button();
+			jQ(".edit_btn").button({
+				icons: {
+					primary:'ui-icon-pencil'
+				}
+			});
+			jQ(".delete_btn").button({
+				icons: {
+					primary:'ui-icon-trash'
+				},
+				text: false
+			});
+			
+			jQ("#result_list li:odd").addClass("li_odd");
+		});
+	}
+</script>

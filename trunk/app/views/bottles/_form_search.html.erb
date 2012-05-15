@@ -1,0 +1,38 @@
+<% 
+#  cas_number    :string(255)
+#  substance_id  :integer
+#  supplier_id   :integer
+#  size          :decimal(, )
+#  product_cat_no:integer
+#  po_number     :string(255)
+#  retired?      :boolean
+
+# ====== > > rails plugin install git://github.com/rails/dynamic_form.git for displaying errors in the next line
+ -%>
+<%= f.error_messages :header_message => "Bottle saving error", :message => "The bottle could not be saved. Please correct the following:" %>
+<div class="field">
+  <%= f.label :cas_number, "CAS number", :class => 'round' %>:&nbsp;<%= f.text_field :cas_number %>
+</div>
+<div class="field">
+  	<%= f.label :barcode, :class => 'round' %>:&nbsp;<%= f.text_field :barcode %>
+</div>
+<!--
+<div class="field">
+  <%= f.label :substance_id, :class => 'round' %>:&nbsp;<%= select(:bottle, :substance_id, Substance.order(:sort_keyword).collect {|sub| [ sub.name, sub.id ] }, { :include_blank => true }) %>
+</div>
+-->
+<div class=" field">
+	<%= f.label :substance_id, :class => 'round' %>:&nbsp;<%= substance_input(@bottle) %>
+</div>
+<div class="field">
+  <%= f.label :supplier_id, :class => 'round' %>:&nbsp;<%= select(:bottle, :supplier_id, Supplier.order(:name).collect {|sup| [ sup.name, sup.id ] }, { :include_blank => true }) %>
+</div>
+<div class="field">
+  	<%= f.label :product_cat_no, "Product cat No.", :class => 'round' %>:&nbsp;<%= f.text_field :product_cat_no %>
+</div>
+<div class="field">
+  <%= f.label :po_number, "PO number", :class => 'round' %>:&nbsp;<%= f.text_field :po_number %>
+</div>
+<div class="field">
+  <%= f.label :retired, :class => 'round' %>:&nbsp;<%= f.check_box :retired? %>
+</div>
