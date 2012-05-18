@@ -10,25 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110603071421) do
+ActiveRecord::Schema.define(:version => 20110922091507) do
 
   create_table "bottles", :force => true do |t|
-    t.integer  "supplier_id",    :precision => 38, :scale => 0
-    t.integer  "substance_id",   :precision => 38, :scale => 0
-    t.integer  "size",           :precision => 38, :scale => 0
-    t.integer  "unit_id",        :precision => 38, :scale => 0
+    t.integer  "supplier_id"
+    t.integer  "substance_id"
+    t.decimal  "size"
+    t.integer  "unit_id"
     t.string   "po_number"
-    t.integer  "group_id",       :precision => 38, :scale => 0
+    t.integer  "group_id"
     t.date     "date_received"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cas_number"
-    t.integer  "sublocation_id", :precision => 38, :scale => 0
-    t.integer  "product_cat_no", :precision => 38, :scale => 0
-    t.datetime "retired_at"
+    t.integer  "sublocation_id"
+    t.string   "product_cat_no"
+    t.date     "retired_at"
     t.boolean  "flammable"
     t.boolean  "hazardous"
     t.string   "barcode"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -45,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20110603071421) do
 
   create_table "sublocations", :force => true do |t|
     t.string   "name"
-    t.integer  "location_id", :precision => 38, :scale => 0
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20110603071421) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id",    :precision => 38, :scale => 0
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

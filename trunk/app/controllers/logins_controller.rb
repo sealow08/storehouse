@@ -28,7 +28,7 @@ class LoginsController < ApplicationController
      if @user.valid?
        if @user.authenticated?
          # Sign the user in and redirect to the correct page.
-         logger.debug "user: #{@user}"
+         logger.debug "user: #{@user.to_yaml}"
          session[:person] = true 
          session[:username] = @user.name
          session[:role] = @user.role.nil? ? "" : @user.role.name

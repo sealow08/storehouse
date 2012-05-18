@@ -29,13 +29,15 @@ class User < ActiveRecord::Base
     user = nil
     
     if !login.blank? && !password.blank?
-      login = "#{login}@bmsi.a-star.edu.sg"
       if auth_against_source(login, password) 
         # Try to get the user from the db, this is to check their role
-        user = User.find_by_name(login.split("@")[0].downcase)
+        user = User.find_by_name(login.downcase)
+        
+        logger.debug "User found: #{user.to_yaml}"
+        
         if user.nil?
-          # if they are not in the db but have been authenticated above then they must be a standard user ie not admin.  The default value for user.admin? is false. Split removes the email domain from the login.
-          user = User.new(:name => login.split("@")[0].downcase)
+          # if they are not in the db but have been authenticated above then they must be a standard user ie not admin.  
+          user = User.new(:name => login.downcase)
         end
       end
     end
@@ -57,9 +59,10 @@ class User < ActiveRecord::Base
   private 
   
   def self.auth_against_source (login, password)
+    login = "#{login}@nnnnn.com" # <---- put your domain here
     ldap = Net::LDAP.new
-    ldap.host = 'bmsiad01.bmsi.a-star.edu.sg'
-    ldap.base ='ou=ETC Users,ou=ETC,dc=bmsi,dc=a-star,dc=edu,dc=sg'
+    ldap.host = 'ldap.nnnnn.com' # <-- put your LDAP server URL or IP address here
+    ldap.base ='ou=your users,dc=nnnnn,dc=com' # <-- put your base LDAP entry here
     ldap.port = 389
     ldap.auth login, password
 

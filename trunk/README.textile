@@ -1,0 +1,39 @@
+h1. Welcome to Storehouse
+
+Welcome to Storehouse. Storehouse is an open-source chemical regent tracking system for use by organisations that need to keep track of (usually) bottles of chemicals entering or being disposed of from their organisation.
+
+It is a very simple system to use and maintain.
+
+h2. Current status
+
+Storehouse is currently live and in production at Experimental Therepuetics Centre - A**STAR. 
+
+h2. Features
+
+* LDAP integration for user authentication
+* Configurable suppliers, locations, sub-locations and substances
+* Simple to use forms for bottle data entry and searching
+* When a user selects a location then only sub-locations linked to that location are available (via AJAX)
+* New sub-locations can be created on the fly while using the Receive stock form to receive a bottle
+* Multiple bottles of the same substance can be created simultaneously by filling out the form once and creating _n-bottles_ using the same information (i.e. using the _Quantity_ field)
+* Deleted bottles are not truly deleted but retired and have a recorded retired date
+* Substance dynamic substance lookup field 
+
+h2. Required gems
+
+# net-ldap (for ldap authentication integration)
+# will_paginate (for various result lists)
+# sqlite3-ruby (if using SQLite for a DB )
+
+h2. Setup
+
+# Create your database
+# Edit the config/database.yml file
+# Run migration(s) with rake db:migrate
+# Standard users don't need to be listed in the user's table as they will authorised via LDAP
+# Add the role named "admin" to the roles table
+# Admin users must appear in the user's table
+# At least one of your users must be an admin so that the admin area can be accessed and reference data updated
+# Edit the user model method: auth_against_source, and set the appropriate details for your LDAP server.  If you have any questions about how to configure net-ldap see the gem documentation at "net-ldap":http://net-ldap.rubyforge.org/Net/LDAP.html
+# Fire up your mongrel(s) or mod_rails
+
