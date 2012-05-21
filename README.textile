@@ -6,7 +6,7 @@ It is a very simple system to use and maintain.
 
 h2. Current status
 
-Storehouse is currently live and in production at Experimental Therepuetics Centre - A**STAR. 
+Storehouse is currently live and in production at Experimental Therepuetics Centre - A*STAR. 
 
 h2. Features
 
